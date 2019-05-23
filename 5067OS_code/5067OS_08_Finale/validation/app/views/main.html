@@ -1,0 +1,47 @@
+<div class="header">
+  <ul class="nav nav-pills pull-right">
+    <li class="active"><a ng-href="#">Home</a></li>
+    <li><a ng-href="#">About</a></li>
+    <li><a ng-href="#">Contact</a></li>
+  </ul>
+  <h3 class="text-muted">validation</h3>
+</div>
+
+<form name="myForm">
+
+<div class="row">
+  First name:
+  <input ng-model="first" name="firstName" required>
+  <span ng-show="myForm.firstName.$error.required">Required</span>
+</div>
+
+<div class="row">
+  <input type="checkbox" ng-model="needsMiddle">
+  Middle name:
+  <input ng-model="middle" name="middleName" ng-required="needsMiddle">
+  <span ng-show="myForm.middleName.$error.required">Required</span>
+</div>
+
+<div class="row">
+  Last name:
+  <input ng-model="last" name="lastName" required>
+  <span ng-show="myForm.lastName.$error.required">Required</span>
+</div>
+
+<div class="row">
+  Age:
+  <input ng-model="age" name="age" ng-pattern="/\d+/" required>
+  <span ng-hide="myForm.age.$valid">Bad age</span>
+</div>
+
+<div class="row">
+  Phone:
+  <input ng-model="phone" name="phone" ng-pattern="/(\d{3})-(\d{4})/" required>
+  <span ng-hide="myForm.phone.$valid">Bad phone</span>
+</div>
+
+<div class="row">
+  <button class="btn" ng-disabled="myForm.$valid==false">Submit</button>
+</div>
+
+</form>

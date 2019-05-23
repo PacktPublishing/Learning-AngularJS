@@ -1,0 +1,21 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+$(function(){
+	function formatCost() {
+		var cv = Math.floor( parseFloat( $('#cost').val() ) * 100.0 ).toString();
+		if ( cv.length < 3 ) cv = "000";
+		$('#fmtCost').text(
+			'$' + cv.substr( 0, cv.length - 2) + '.' + cv.substr( cv.length - 2, 2 )
+		);
+	}
+	$('#cost').keyup(formatCost);
+});
+</script>
+</head>
+<body>
+Cost: <input type="text" id="cost" placeholder="Number">
+<p>The cost is <span id="fmtCost"></span></p>
+</body>
+</html>

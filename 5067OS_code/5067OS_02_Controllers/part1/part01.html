@@ -1,0 +1,15 @@
+<html ng-app>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.js"></script>
+<script>
+function ContactsCtrl( $scope ) {
+	$scope.people = ['Jane','Jack','Jill'];
+}
+</script>
+</head>
+<body ng-controller="ContactsCtrl">
+<div ng-repeat="person in people">
+{{person}}
+</div>
+</body>
+</html>

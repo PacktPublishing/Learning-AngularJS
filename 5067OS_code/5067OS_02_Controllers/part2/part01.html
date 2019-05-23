@@ -1,0 +1,34 @@
+<html ng-app>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.js"></script>
+<script>
+function ContactsCtrl( $scope ) {
+	$scope.people = [
+		{name:'Jane',phones:['555-1212']},
+		{name:'Jack',phones:['555-2323','555-7575']},
+		{name:'Jill',phones:['555-3434']}
+	];
+}
+function PersonCtrl( $scope ) {
+	$scope.show = function() {
+		$scope.person.show_phones=true;
+	}
+	$scope.hide = function() {
+		$scope.person.show_phones=false;
+	}
+}
+</script>
+</head>
+<body ng-controller="ContactsCtrl">
+<div ng-repeat="person in people" ng-controller="PersonCtrl">
+{{person.name}}
+(
+<a href="#" ng-click="show()" ng-hide="person.show_phones">Show</a>
+<a href="#" ng-click="hide()" ng-show="person.show_phones">Hide</a>
+)
+<div style="margin-left:50px;" ng-show="person.show_phones">
+	<div ng-repeat="phone in person.phones">{{phone}}</div>
+</div>
+</div>
+</body>
+</html>

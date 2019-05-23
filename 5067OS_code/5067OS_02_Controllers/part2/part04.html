@@ -1,0 +1,62 @@
+<html ng-app="MyApp">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-animate.js"></script>
+<script>
+var myApp = angular.module('MyApp', ['ngAnimate']);
+function ContactsCtrl( $scope ) {
+	$scope.people = [
+		{name:'Jane',phones:['555-1212']},
+		{name:'Jack',phones:['555-2323','555-7575']},
+		{name:'Jill',phones:['555-3434']}
+	];
+	$scope.add = function() {
+		$scope.people.push({name:'Mary',phones:['555-1212']});
+	}
+}
+function PersonCtrl( $scope ) {
+	$scope.show = function() {
+		$scope.person.show_phones=true;
+	}
+	$scope.hide = function() {
+		$scope.person.show_phones=false;
+	}
+}
+</script>
+<style>
+.gray { background: #eee;}
+
+.person.ng-enter,
+.person.ng-leave {
+  -webkit-transition:0.5s linear all;
+  transition:0.5s linear all;
+}
+
+.person.ng-enter,
+.person.ng-leave.ng-leave-active {
+  opacity:0;
+}
+.person.ng-leave,
+.person.ng-enter.ng-enter-active {
+  opacity:1;
+}
+
+.ng-hide {
+  display:none!important;
+}
+</style>
+</head>
+<body ng-controller="ContactsCtrl">
+<button ng-click="add()">Add</button>
+<div ng-repeat="person in people" ng-controller="PersonCtrl" class="person">
+{{person.name}}
+(
+<a href="#" ng-click="show()" ng-hide="person.show_phones">Show</a>
+<a href="#" ng-click="hide()" ng-show="person.show_phones">Hide</a>
+)
+<div style="margin-left:50px;" ng-show="person.show_phones">
+	<div ng-repeat="phone in person.phones" ng-class-odd="'gray'" style="font-weight:{{$index%2==0?'bold':''}};">{{phone}}</div>
+</div>
+</div>
+</body>
+</html>

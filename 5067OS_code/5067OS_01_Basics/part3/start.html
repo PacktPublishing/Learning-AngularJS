@@ -1,0 +1,29 @@
+<html ng-app>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.js"></script>
+<script>
+function CostCtrl( $scope ) {
+	$scope.cost = 1000.1;
+	$scope.update = function() {
+		$scope.tax = $scope.cost * 0.15;
+		$scope.total = parseFloat( $scope.cost ) + $scope.tax;
+	}
+	$scope.$watch( 'cost', $scope.update );
+}
+</script>
+</head>
+<body>
+
+<div ng-controller="CostCtrl">
+</div>
+Cost: <input ng-model="cost" type="text" placeholder="cost" />
+<p>
+This cost is {{cost|currency}}.
+</p>
+<p>
+This tax is {{tax|currency}}.
+</p>
+</div>
+
+</body>
+</html>

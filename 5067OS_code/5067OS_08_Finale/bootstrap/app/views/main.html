@@ -1,0 +1,39 @@
+<div class="header">
+  <ul class="nav nav-pills pull-right">
+    <li class="active"><a ng-href="#">Home</a></li>
+    <li><a ng-href="#">About</a></li>
+    <li><a ng-href="#">Contact</a></li>
+  </ul>
+  <h3 class="text-muted">bootstrap</h3>
+</div>
+
+<div class="row marketing">
+  <datepicker ng-model="start" show-weeks="false"></datepicker>
+  {{start|date}}
+</div>
+
+<tabset>
+  <tab heading="A">
+    Hello there
+  </tab>
+  <tab heading="B">
+    Hello there B
+  </tab>
+  <tab heading="C">
+    Hello there C
+  </tab>
+</tabset>
+
+<div class="btn-group">
+        <button type="button" class="btn btn-primary" ng-model="val" btn-radio="'A'">A</button>
+        <button type="button" class="btn btn-primary" ng-model="val" btn-radio="'B'">B</button>
+        <button type="button" class="btn btn-primary" ng-model="val" btn-radio="'C'">C</button>
+</div>
+
+  <input type="text" ng-model="selected" typeahead="state for state in states" class="form-control">
+
+<carousel>
+  <slide ng-repeat="slide in slides">
+    <img ng-src="images/{{slide}}" style="margin:auto;">
+  </slide>
+</carousel>

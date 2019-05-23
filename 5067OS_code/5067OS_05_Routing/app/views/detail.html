@@ -1,0 +1,19 @@
+<div class="header">
+  <ul class="nav nav-pills pull-right">
+    <li class="active"><a ng-href="#">Home</a></li>
+  </ul>
+  <h3 class="text-muted">To-Do List</h3>
+</div>
+
+<div class="row" ng-controller="DetailInfoCtrl">
+  	<div>
+		<a href="#" class="btn btn-default" role="button">Home</a>
+  	</div>
+  	<div style="margin-top:1em;">
+  		<input type="text" ng-model="item.text" />
+  	</div>
+  	<div style="margin-top:1em;">
+		<a href="#" class="btn" role="button">Cancel</a>
+  		<button class="btn btn-default" ng-click="save()">Save</button>
+  	</div>
+</div>
